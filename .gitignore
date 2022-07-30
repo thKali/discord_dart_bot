@@ -5,4 +5,4 @@
 # Conventional directory for build output.
 build/
 
-# lib/my_constants.dart
+lib/my_constants.dart
