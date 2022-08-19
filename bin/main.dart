@@ -1,39 +1,32 @@
-import 'package:discord_bot/commands/economy.dart';
-import 'package:discord_bot/commands/miscellaneous.dart';
-import 'package:discord_bot/commands/moderation.dart';
-import 'package:discord_bot/my_constants.dart';
+import 'package:discord_bot/error_handler.dart';
+import 'package:discord_bot/settings.dart';
+import 'package:discord_bot/src/commands/ping.dart';
 import 'package:nyxx/nyxx.dart';
-import 'package:nyxx_interactions/nyxx_interactions.dart';
+import 'package:nyxx_commands/nyxx_commands.dart';
+// List<String> admin = ['338739607044620288'];
 
 void main(List<String> arguments) {
-  final bot =
-      NyxxFactory.createNyxxWebsocket(MyConstants.token, GatewayIntents.all)
-        ..registerPlugin(Logging()) // Default logging plugin
-        ..registerPlugin(
-            CliIntegration()) // Cli integration for nyxx allows stopping application via SIGTERM and SIGKILl
-        ..registerPlugin(
-            IgnoreExceptions()) // Plugin that handles uncaught exceptions that may occur
-        ..connect();
+  final bot = NyxxFactory.createNyxxWebsocket(token, intents);
 
-  //slash
-  final singleCommand =
-      SlashCommandBuilder("help", "This is example help command", [])
-        ..registerHandler((event) async {
-          await event.respond(MessageBuilder.content("Work in progress"));
-        });
+  final commands = CommandsPlugin(
+    prefix: mentionOr((_) => prefix),
+    options: CommandsOptions(logErrors: false, hideOriginalResponse: false),
+  );
 
-  IInteractions.create(WebsocketInteractionBackend(bot))
-    ..registerSlashCommand(
-        singleCommand) // Register created before slash command
-    ..syncOnReady(); // This is needed if you want to sync commands on bot startup.
+  //commands regist
+  //uses cascade operator
+  commands.addCommand(ping);
 
-  String prefix = '!';
-  List listenableChannels = [];
+  // Add our error handler
+  commands.onCommandError.listen(commandErrorHandler);
 
-  //inicializar modulos de comandos
-  Economy(bot, prefix, listenableChannels).init();
-  Moderation(bot, prefix, listenableChannels).init();
-  Micellaneous(bot, prefix, listenableChannels).init();
+  // add plugins
+  bot
+    ..registerPlugin(Logging())
+    ..registerPlugin(CliIntegration())
+    ..registerPlugin(IgnoreExceptions())
+    ..registerPlugin(commands);
+
+
+  bot.connect();
 }
-
-  // List<String> admin = ['338739607044620288'];
