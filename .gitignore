@@ -5,4 +5,4 @@
 # Conventional directory for build output.
 build/
 
-# lib/settings.dart
+lib/settings.dart
