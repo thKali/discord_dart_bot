@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "46.0.0"
+    version: "38.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.6.0"
+    version: "3.4.1"
   args:
     dependency: transitive
     description:
@@ -64,6 +64,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  dart_style:
+    dependency: transitive
+    description:
+      name: dart_style
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.3"
+  duration:
+    dependency: "direct main"
+    description:
+      name: duration
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.11"
   file:
     dependency: transitive
     description:
@@ -169,6 +183,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  nyxx_commands:
+    dependency: "direct main"
+    description:
+      name: nyxx_commands
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.3.0"
   nyxx_interactions:
     dependency: "direct main"
     description:
@@ -204,6 +225,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  random_string:
+    dependency: transitive
+    description:
+      name: random_string
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.3.1"
   shelf:
     dependency: transitive
     description:
@@ -302,6 +330,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.16"
+  time_ago_provider:
+    dependency: "direct main"
+    description:
+      name: time_ago_provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.0"
   typed_data:
     dependency: transitive
     description:

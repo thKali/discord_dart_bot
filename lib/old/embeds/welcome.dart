@@ -1,4 +1,4 @@
-import 'package:discord_bot/embeds/embed_fields/test_field.dart';
+import 'embed_fields/test_field.dart';
 import 'package:nyxx/nyxx.dart';
 
 class EmbedWelcome extends EmbedBuilder {
